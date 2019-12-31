@@ -1,0 +1,18 @@
+﻿@model DAL.User
+@{
+    ViewData["Title"] = "UserView";
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <ul>
+        @foreach (var user in ViewData["list_user"] as List<DAL.User>)
+        {
+        <div>
+            <li>Id_user : @user.Id_user, Nom : @user.nom , Prenom : @user.prenom, Adresse: @user.adresse , CIN: @user.cin</li>
+        </div>
+        }
+        <br />
+        
+    </ul>
+

@@ -1,0 +1,91 @@
+﻿@model DAL.User
+@{
+    ViewData["Title"] = "AddVols";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var i = 0;
+}
+    <form action="AddVolsRequest" method="post">
+        <ul>
+            <div>
+                <li>
+                    Identifiant user :
+                    <select name="Id_user" runat="server" id="Id_user">
+
+                        @foreach (var user in ViewData["list_user"] as List<DAL.User>)
+                        {
+                            <option value=i>@user.nom</option>
+                            i++;
+                        }
+                        <br />
+
+                    </select>
+                </li>
+            </div>
+        </ul>
+        <ul>
+            <div>
+                <li>
+                    Identifiant Avion :
+                    <select name="Id_avion" runat="server" id="Id_avion">
+
+                        @foreach (var avion in ViewData["list_avion"] as List<DAL.avion>)
+                        {
+                            <option value=i>@avion.description</option>
+                            i++;
+                        }
+                        <br />
+
+                    </select>
+                </li>
+            </div>
+        </ul>
+        <ul>
+            <div>
+                <li>
+                    Identifiant Aeroport depart :
+                    <select name="Id_aero_dep" runat="server" id="Id_aero_dep">
+
+                        @foreach (var aero_dep in ViewData["list_aero_dep"] as List<DAL.aeroport>)
+                        {
+                            <option value=i>@aero_dep.ville</option>
+                            i++;
+                        }
+                        <br />
+
+                    </select>
+                </li>
+            </div>
+        </ul>
+        <ul>
+            <div>
+                <li>
+                    @Html.DropDownListFor(Model => Model.Id_user, ViewData["list_user"], "Id_user", "nom"));
+                    ))
+                    @*Identifiant Aeroport arrivée :
+        <select name="Id_aero_arri" runat="server" id="Id_aero_arri">
+
+            @foreach (var aero_arri in ViewData["list_aero_arri"] as List<DAL.aeroport>)
+            {
+                <option value=i>@aero_arri.ville</option>
+                i++;
+            }
+            <br />
+
+        </select>*@
+                </li>
+            </div>
+        </ul>
+        <ul>
+            <div>
+                <li>
+                    Description :
+                    <textarea name="Description" runat="server" cols="40" rows="5"></textarea>
+                </li>
+            </div>
+        </ul>
+        <input type="submit" value="Submit" />
+    </form>
+
